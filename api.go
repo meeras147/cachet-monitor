@@ -37,7 +37,7 @@ func (api CachetAPI) Ping() error {
 }
 
 // SendMetric adds a data point to a cachet monitor
-func (api CachetAPI) SendMetric(id int, lag int64) {
+func (api CachetAPI) SendMetric(id int, lag float32) {
 	logrus.Debugf("Sending lag metric ID:%d RTT %vms", id, lag)
 
 	jsonBytes, _ := json.Marshal(map[string]interface{}{
