@@ -142,9 +142,9 @@ func (mon *AbstractMonitor) ClockStop() {
 func (mon *AbstractMonitor) test() bool { return false }
 
 func (mon *AbstractMonitor) tick(iface MonitorInterface) {
-	reqStart := getMs()
+	//reqStart := getMs()
 	up := iface.test()
-	lag := getMs() - reqStart
+	//lag := getMs() - reqStart
 
 	histSize := HistorySize
 	if mon.ThresholdCount {
@@ -162,7 +162,7 @@ func (mon *AbstractMonitor) tick(iface MonitorInterface) {
 
 	// report lag
 	if mon.MetricID > 0 {
-		go mon.config.API.SendMetric(mon.MetricID, lag)
+		go mon.config.API.SendMetric(mon.MetricID, mon.Threshold)
 	}
 }
 
